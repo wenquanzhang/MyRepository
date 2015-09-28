@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<!-- 加载属性文件 -->
+	<!-- <properties resource="db.properties"></properties> -->
+	<!-- properties特性 -->
+	<!-- 注意：MyBaties 将按照下面的顺序来加载属性： -->
+	<!-- 1. 在properties元素体内定义的属性首先被读取 -->
+	<!-- 2. 然后会读取properties元素中resource或url加载的属性，它会覆盖已读取的同名属性 -->
+	<!-- 3. 最后读取parameterType传递的属性，它会覆盖已读取的属性 -->
+
+	<!-- 全局配置参数 -->
+	<!-- <settings></settings> -->
+
+	<!-- 别名定义 -->
+	<!-- <typeAliases> <typeAlias type="com.org.business.sample.pojo.User" alias="user"/> 
+		批量别名定义 <package name="com.org.business.sample.po"/> </typeAliases> -->
+
+	<!-- 类型处理器 -->
+	<!-- <typeHandlers></typeHandlers> -->
+
+	<!-- 映射配置 -->
+	<!-- 加载方式3种: 1. 通过resource方法一次加载一个映射文件 <mapper resource="xxxx/xxxx.xml"/> 
+		2. 通过url方法加载文件 3. 通过mapper接口加载映射文件 遵循规范：需要将mapper接口类名和mapper.xml映射文件名称保持一致，且在一个目录 
+		前提：使用mapper代理的方法 <mappers class="com.org.business.sample.dao.IUserDao"/> -->
+	
+	
+	<mappers>
+		<mapper resource="com/org/business/sample/dao/UserDao.xml" />
+		<mapper resource="com/org/business/sample/dao/UserDaoManage.xml" />
+	</mappers>
+	
+</configuration> 

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.org.business.sample.dao.UserDao">
+
+ <resultMap id="resultMap" type="com.org.business.sample.pojo.User" >
+   <id column="USER_ID" property="userId" jdbcType="INTEGER" />
+   <result column="USER_NAME" property="userName" jdbcType="VARCHAR" />
+   <result column="USER_SEX" property="userSex" jdbcType="VARCHAR" />
+   <result column="DEVICE_IMEI" property="deviceIMEI" jdbcType="VARCHAR" />
+   <result column="CITY" property="city" jdbcType="VARCHAR" />
+ </resultMap>
+ 
+
+	<select id="getUser" resultMap="resultMap" parameterType="com.org.business.sample.pojo.User" >
+		SELECT
+			USER_ID,
+			USER_NAME,
+			USER_SEX,
+			DEVICE_IMEI,
+			CITY
+		FROM T_USER WHERE USER_NAME="张文权"
+	</select>
+
+	<insert id="addUser" parameterType="com.org.business.sample.pojo.User"
+		flushCache="true">
+		INSERT INTO T_USER (USER_ID,USER_NAME,USER_SEX,DEVICE_IMEI,CITY) VALUES
+		(#{userId},#{userName},#{userSex},#{deviceIMEI},#{city})
+	</insert>
+	
+	<update id="updateUser" parameterType="com.org.business.sample.pojo.User">
+		UPDATE T_USER SET
+		USER_NAME=#{userName} WHERE USER_ID=#{userId}
+	</update>
+	
+	<delete id="deleteUser" parameterType="int">
+		DELETE FROM T_USER WHERE
+		USER_ID=#{userId}
+	</delete>
+</mapper>
